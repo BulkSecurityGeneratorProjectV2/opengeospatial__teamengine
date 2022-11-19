@@ -21,6 +21,7 @@ import java.io.PrintWriter;
 import java.io.RandomAccessFile;
 import java.io.Reader;
 import java.net.URLConnection;
+import java.nio.file.Files;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -153,7 +154,7 @@ public class HTTPParser {
 
     private static File create_part_file(Reader in, String boundary)
             throws Exception {
-        File temp = File.createTempFile("$te_", ".tmp");
+        File temp = Files.createTempFile("$te_", ".tmp").toFile();
         RandomAccessFile raf = new RandomAccessFile(temp, "rw");
         int qLen = boundary.length() + 2;
         int[] boundary_queue = new int[qLen];

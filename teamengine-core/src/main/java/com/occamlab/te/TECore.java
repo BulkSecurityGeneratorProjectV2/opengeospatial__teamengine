@@ -35,6 +35,7 @@ import java.lang.reflect.Method;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.net.URLConnection;
+import java.nio.file.Files;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -2101,7 +2102,7 @@ public class TECore implements Runnable {
     if (t == null) {
       t = tf.newTransformer();
     }
-    File temp = File.createTempFile("$te_", ".xml");
+    File temp = Files.createTempFile("$te_", ".xml").toFile();
     // Fortify Mod: It is possible to get here without assigning a value to content.  
     // if (content.getNodeType() == Node.TEXT_NODE) {
     if (content != null && content.getNodeType() == Node.TEXT_NODE) {
